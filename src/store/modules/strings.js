@@ -1,7 +1,9 @@
+
 export default {
     state: {
         strings: {
-            titlePage: 'Personal Site'
+            titlePage: 'Personal Site',
+            fullyear: 2021
         },
     },
     getters: {

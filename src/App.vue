@@ -1,25 +1,32 @@
 <template>
   <div id="app">
     <Menu />
-   
+    <transition name="fade-view" mode="out-in">
+        <router-view></router-view>
+    </transition>
+    <Footer />
   </div>
 </template>
 
 <script>
-import Menu from "./components/Menu"
-// import Home from "./components/Home"
-// import Footer from "./components/Footer"
+import Menu from "./components/Menu";
+import Footer from "./components/Footer";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     Menu,
-    // Home,
-    // Footer
-  }
-}
+    Footer
+  },
+};
 </script>
 
-<style>
+<style scoped>
 
+.fade-view-enter, .fade-view-leave-to {
+  opacity: 0;
+}
+.fade-view-enter-active, .fade-view-leave-active {
+  transition: opacity .5s ease-in-out;
+}
 </style>
