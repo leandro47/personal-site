@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <Menu />
+    <div class="mt-4"></div>
     <transition name="fade-view" mode="out-in">
         <router-view></router-view>
     </transition>

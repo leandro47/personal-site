@@ -2,7 +2,7 @@
 export default {
     state: {
         strings: {
-            titlePage: 'Personal Site',
+            myName: 'Leandro Silva',
             fullyear: 2021
         },
     },

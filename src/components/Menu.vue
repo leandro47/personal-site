@@ -1,9 +1,14 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar mainNav fixed-top" id="mainNav">
     <div class="container">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">
-        Leandro da Silva
-      </a>
+      <router-link
+        v-if="showName"
+        to="/"
+        class="navbar-brand js-scroll-trigger color-name"
+      >
+        {{ strings.myName }}
+      </router-link>
+
       <button
         class="navbar-toggler navbar-toggler-right"
         type="button"
@@ -18,31 +23,11 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ml-auto">
-          <li class="nav-item">
-            <router-link to="/" class="nav-link js-scroll-trigger"
-              >Home</router-link
-            >
-          </li>
-          <li class="nav-item">
-            <router-link to="/about" class="nav-link js-scroll-trigger"
-              >About</router-link
-            >
-          </li>
-          <li class="nav-item">
-            <router-link to="/experience" class="nav-link js-scroll-trigger"
-              >Experience</router-link
-            >
-          </li>
-          <li class="nav-item">
-            <router-link to="/skill" class="nav-link js-scroll-trigger"
-              >Tecnologies</router-link
-            >
-          </li>
-          <li class="nav-item">
-            <router-link to="/contact" class="nav-link js-scroll-trigger"
-              >Contact</router-link
-            >
-          </li>
+          <ItemsMenu :to="'/'" :name="'Home'" />
+          <ItemsMenu :to="'/about'" :name="'About'" />
+          <ItemsMenu :to="'/experience'" :name="'Experience'" />
+          <ItemsMenu :to="'/skill'" :name="'Tecnologies'" />
+          <ItemsMenu :to="'/contact'" :name="'Contact'" />
         </ul>
       </div>
     </div>
@@ -50,13 +35,27 @@
 </template>
 
 <script>
+import ItemsMenu from "./ItensMenu";
 import { mapGetters } from "vuex";
 
 export default {
+  data() {
+    return {
+      showName: false,
+    };
+  },
   computed: {
     ...mapGetters({
       strings: "getStrings",
     }),
+  },
+  components: {
+    ItemsMenu,
+  },
+  created() {
+    setTimeout(() => {
+      this.showName = true;
+    }, 2);
   },
 };
 </script>
@@ -64,5 +63,8 @@ export default {
 <style scoped>
 .mainNav {
   background-color: #212529 !important;
+}
+.color-name{
+  color: #00c385 !important;
 }
 </style>
