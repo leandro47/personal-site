@@ -1,11 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar mainNav fixed-top" id="mainNav">
     <div class="container">
-      <router-link
-        v-if="showName"
-        to="/"
-        class="navbar-brand js-scroll-trigger color-name"
-      >
+      <router-link to="/" class="navbar-brand js-scroll-trigger color-name">
         {{ strings.myName }}
       </router-link>
 
@@ -22,13 +18,19 @@
         <i class="fas fa-bars ml-1"></i>
       </button>
       <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav text-uppercase ml-auto">
-          <ItemsMenu :to="'/'" :name="'Home'" />
-          <ItemsMenu :to="'/about'" :name="'About'" />
-          <ItemsMenu :to="'/experience'" :name="'Experience'" />
-          <ItemsMenu :to="'/skill'" :name="'Tecnologies'" />
-          <ItemsMenu :to="'/contact'" :name="'Contact'" />
-        </ul>
+        <transition
+          name="custom-classes-transition"
+          enter-active-class="animated fadeInRight"
+          leave-active-class="animated bounceOutRight"
+        >
+          <ul v-if="item1" class="navbar-nav text-uppercase ml-auto">
+            <ItemsMenu :to="'/'" :name="'Home'" />
+            <ItemsMenu :to="'/about'" :name="'About'" />
+            <ItemsMenu :to="'/experience'" :name="'Experience'" />
+            <ItemsMenu :to="'/skill'" :name="'Tecnologies'" />
+            <ItemsMenu :to="'/contact'" :name="'Contact'" />
+          </ul>
+        </transition>
       </div>
     </div>
   </nav>
@@ -41,7 +43,7 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      showName: false,
+      item1: false,
     };
   },
   computed: {
@@ -54,8 +56,8 @@ export default {
   },
   created() {
     setTimeout(() => {
-      this.showName = true;
-    }, 2);
+      this.item1 = true;
+    }, 1000);
   },
 };
 </script>
@@ -64,7 +66,11 @@ export default {
 .mainNav {
   background-color: #212529 !important;
 }
-.color-name{
+.color-name {
   color: #00c385 !important;
+}
+.navbar-toggler {
+  background-color: #00c385 !important;
+  
 }
 </style>
