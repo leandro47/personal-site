@@ -2,44 +2,13 @@
   <section class="page-section" id="services">
     <div class="container">
       <div class="text-center">
-        <h2 class="section-heading text-uppercase">About me</h2>
-        <h3 class="section-subheading text-muted">
-          Lorem ipsum dolor sit amet consectetur.
+        <h2 class="section-heading text-uppercase">{{strings.AboutMsg2}}</h2>
+        <h3 class="section-subheading text-muted" id="text1">
         </h3>
       </div>
-      <div class="row text-center">
-        <div class="col-md-4">
-          <span class="fa-stack fa-4x">
-            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
-          </span>
-          <h4 class="my-3">E-Commerce</h4>
-          <p class="text-muted">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
-            maxime quam architecto quo inventore harum ex magni, dicta impedit.
-          </p>
-        </div>
-        <div class="col-md-4">
-          <span class="fa-stack fa-4x">
-            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-laptop fa-stack-1x fa-inverse"></i>
-          </span>
-          <h4 class="my-3">Responsive Design</h4>
-          <p class="text-muted">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
-            maxime quam architecto quo inventore harum ex magni, dicta impedit.
-          </p>
-        </div>
-        <div class="col-md-4">
-          <span class="fa-stack fa-4x">
-            <i class="fas fa-circle fa-stack-2x text-primary"></i>
-            <i class="fas fa-lock fa-stack-1x fa-inverse"></i>
-          </span>
-          <h4 class="my-3">Web Security</h4>
-          <p class="text-muted">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima
-            maxime quam architecto quo inventore harum ex magni, dicta impedit.
-          </p>
+      <div class="row justify-content-md-center">
+        <div class="col-md-4 text-center mr-3 ml-3">
+          <img src="../assets/img/about.svg" class="img-fluid" alt="" />
         </div>
       </div>
     </div>
@@ -47,7 +16,35 @@
 </template>
 
 <script>
-export default {};
+import { mapGetters } from "vuex";
+export default {
+  data() {
+    return {
+      about: "",
+    };
+  },
+  computed: {
+    ...mapGetters({
+      strings: "getStrings",
+    }),
+  },
+  methods: {
+    settext() {
+      this.about = this.strings.AboutMsg1;
+    },
+  },
+  created() {
+    this.settext();
+
+    let str = this.about;
+    let char = str.split("").reverse();
+    let typer = setInterval(function () {
+      if (!char.length) return clearInterval(typer);
+      let next = char.pop();
+      document.getElementById("text1").innerHTML += next;
+    }, 50);
+  },
+};
 </script>
 
 <style scoped>
