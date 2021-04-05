@@ -48,4 +48,7 @@ export default {
 </script>
 
 <style scoped>
+.timeline-image{
+  background-color: #61C486 !important;
+}
 </style>
