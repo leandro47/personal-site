@@ -26,11 +26,12 @@ export default {
   computed: {
     ...mapGetters({
       strings: "getStrings",
+      aboutMe: "getAboutMe",
     }),
   },
   methods: {
     settext() {
-      this.about = this.strings.AboutMsg1;
+      this.about = this.aboutMe.msg1;
     },
   },
   created() {
@@ -42,7 +43,7 @@ export default {
       if (!char.length) return clearInterval(typer);
       let next = char.pop();
       document.getElementById("text1").innerHTML += next;
-    }, 50);
+    }, 30);
   },
 };
 </script>
