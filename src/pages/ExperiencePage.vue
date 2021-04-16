@@ -6,7 +6,7 @@
         <h3 class="section-subheading text-muted">Places I worked.</h3>
       </div>
       <ul class="timeline">
-        <Items v-for="xp in experience" :class="sendClass()" :xp="xp" :key="xp.id" />
+        <Items v-for="xps in experience" :class="'timeline-inverted'" :item="xps" :key="xps.id" />
         <li class="timeline-inverted">
           <div class="timeline-image">
             <h4>
@@ -28,6 +28,7 @@ export default {
   data() {
     return {
       invert: false,
+      attribute: 'timeline-inverted'
     };
   },
   components: {
@@ -36,7 +37,7 @@ export default {
   methods: {
     sendClass() {
       this.invert = !this.invert;
-      return this.invert === false ? 'timeline-inverted' : ''; 
+      return this.invert === false ? 'timeline-inverted' : false; 
     },
   },
   computed: {

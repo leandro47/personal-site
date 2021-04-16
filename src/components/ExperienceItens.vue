@@ -9,12 +9,12 @@
     </div>
     <div class="timeline-panel">
       <div class="timeline-heading">
-        <h4>{{ xp.period }}</h4>
-        <h4 class="subheading">{{xp.company}}</h4>
+        <h4>{{ item.period }}</h4>
+        <h4 class="subheading">{{item.company}}</h4>
       </div>
       <div class="timeline-body">
         <p class="text-muted">
-         {{xp.description}}
+         {{item.description}}
         </p>
       </div>
     </div>
@@ -24,7 +24,7 @@
 <script>
 export default {
   props: {
-    xp: {
+    item: {
       type: Object,
       required: true,
     },
