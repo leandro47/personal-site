@@ -6,7 +6,12 @@
         <h3 class="section-subheading text-muted">Places I worked.</h3>
       </div>
       <ul class="timeline">
-        <Items v-for="xps in experience" :class="'timeline-inverted'" :item="xps" :key="xps.id" />
+        <Items
+          v-for="xps in experience"
+          :class="'timeline-inverted'"
+          :item="xps"
+          :key="xps.ID"
+        />
         <li class="timeline-inverted">
           <div class="timeline-image">
             <h4>
@@ -22,34 +27,30 @@
 
 <script>
 import Items from "./../components/ExperienceItens";
-import { mapGetters } from "vuex";
+import {mapGetters, mapActions} from "vuex";
 
 export default {
   data() {
     return {
-      invert: false,
-      attribute: 'timeline-inverted'
     };
   },
   components: {
     Items,
-  },
-  methods: {
-    sendClass() {
-      this.invert = !this.invert;
-      return this.invert === false ? 'timeline-inverted' : false; 
-    },
   },
   computed: {
     ...mapGetters({
       experience: "getExperience",
     }),
   },
+  methods: mapActions(["setExperience"]),
+  created(){
+    this.setExperience();
+  }
 };
 </script>
 
 <style scoped>
-.timeline-image{
-  background-color: #61C486 !important;
+.timeline-image {
+  background-color: #61c486 !important;
 }
 </style>

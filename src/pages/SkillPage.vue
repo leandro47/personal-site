@@ -8,14 +8,14 @@
         </h3>
       </div>
       <div class="row">
-        <Skill v-for="tec in skills" :skill="tec" :key="tec.id"/>
+        <Skill v-for="tec in skills" :skill="tec" :key="tec.ID"/>
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import Skill from './../components/SkillItems'
 export default {
   components:{
@@ -25,6 +25,10 @@ export default {
     ...mapGetters({
       skills : 'getTecnologies'
     })
+  },
+  methods: mapActions(["setSkills"]),
+  created(){
+    this.setSkills();
   }
 };
 </script>

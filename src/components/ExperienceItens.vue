@@ -9,12 +9,12 @@
     </div>
     <div class="timeline-panel">
       <div class="timeline-heading">
-        <h4>{{ item.period }}</h4>
-        <h4 class="subheading">{{item.company}}</h4>
+        <h4>{{ item.PERIOD }}</h4>
+        <h4 class="subheading">{{item.COMPANY}}</h4>
       </div>
       <div class="timeline-body">
         <p class="text-muted">
-         {{item.description}}
+         {{item.DESCRIPTION}}
         </p>
       </div>
     </div>

@@ -1,4 +1,5 @@
 const URL_API = "http://localhost:8080/aboutme/1";
+
 export default {
     state: {
         aboutMe: {
@@ -23,7 +24,7 @@ export default {
             .then((response) => response.json())
             .then((data) => {
                 context.commit("setAboutMe", data.data.ABOUTME)
-                })
+            })
             .catch(error => {
                 console.log(error)
             })
