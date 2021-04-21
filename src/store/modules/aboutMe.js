@@ -1,4 +1,4 @@
-const URL_API = "http://localhost:8080/aboutme/1";
+const URL_API = "https://leandro47.com/personal-data-api/public/aboutme/1";
 
 export default {
     state: {
@@ -20,6 +20,7 @@ export default {
         setAboutMe(context) {
             fetch(URL_API, {
                 method: "GET",
+                headers: new Headers({ Authorization: `Basic ${localStorage.getItem('Token_Api')}` })
             })
             .then((response) => response.json())
             .then((data) => {

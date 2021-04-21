@@ -1,4 +1,4 @@
-const URL_API = "http://localhost:8080/skill";
+const URL_API = "https://leandro47.com/personal-data-api/public/skill";
 
 export default {
     state: {

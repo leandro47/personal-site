@@ -1,4 +1,4 @@
-const URL_API = "http://localhost:8080/experience";
+const URL_API = "https://leandro47.com/personal-data-api/public/experience";
 
 export default {
     state: {
@@ -18,9 +18,11 @@ export default {
         setExperience(context) {
             fetch(URL_API, {
                 method: 'GET',
+                headers: new Headers({ Authorization: `Basic ${localStorage.getItem('Token_Api')}` }),
             })
             .then((reponse) => reponse.json())
             .then((data) => {
+                console.log(data);
                 context.commit("setExperience", data.data)
             })
             .catch((error) => {

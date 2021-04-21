@@ -21,7 +21,7 @@ export default {
   },
   methods: {
     auth() {
-      fetch("http://localhost:8080/auth", {
+      fetch("https://leandro47.com/personal-data-api/public/auth", {
         method: "POST",
         body: JSON.stringify({
           user: "LEANDRO DA SILVA",
