@@ -19,7 +19,7 @@
         <a
           v-if="showBtn"
           class="btn btn-primary btn-xl mr-3 text-uppercase js-scroll-trigger animationObject"
-          href="http://localhost:8080/resume"
+          href="https://leandro47.com/personal-data-api/public/resume"
           >{{ strings.HomeMsg3 }}</a
         >
       </transition>

@@ -22,7 +22,6 @@ export default {
             })
             .then((reponse) => reponse.json())
             .then((data) => {
-                console.log(data);
                 context.commit("setExperience", data.data)
             })
             .catch((error) => {
