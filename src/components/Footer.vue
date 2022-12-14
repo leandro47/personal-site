@@ -3,16 +3,18 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-4 text-lg-left">
-          Copyright © Leandro da Silva {{ strings.fullyear }}
+          Copyright © Leandro da Silva {{ this.year }}
         </div>
         <div class="col-lg-4 my-3 my-lg-0">
           <a class="btn btn-dark btn-social mx-2" target="_blank" href="https://twitter.com/LeandroDS47">
             <i class="fab fa-twitter"></i>
           </a>
-          <a class="btn btn-dark btn-social mx-2" target="_blank" href="https://www.facebook.com/leandro.silva.5059601/">
+          <a class="btn btn-dark btn-social mx-2" target="_blank"
+            href="https://www.facebook.com/leandro.silva.5059601/">
             <i class="fab fa-facebook-f"></i>
           </a>
-          <a class="btn btn-dark btn-social mx-2" target="_blank" href="https://www.linkedin.com/in/leandro-silva-a5b84318b/">
+          <a class="btn btn-dark btn-social mx-2" target="_blank"
+            href="https://www.linkedin.com/in/leandro-silva-a5b84318b/">
             <i class="fab fa-linkedin-in"></i>
           </a>
           <a class="btn btn-dark btn-social mx-2" target="_blank" href="https://github.com/leandro47">
@@ -25,15 +27,22 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
 export default {
   name: "Footer",
-  computed: mapGetters({
-    strings: "getStrings",
-  }),
+  data() {
+    return {
+      year: null
+    }
+  },
+  methods: {
+    setYear() {
+      const date = new Date();
+
+      this.year = date.getFullYear();
+    }
+  },
+  created() {
+    this.setYear();
+  }
 };
 </script>
-
-<style scoped>
-</style>
